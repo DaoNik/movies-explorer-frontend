@@ -8,7 +8,7 @@ function Portfolio() {
       <ul className='portfolio__list'>
         <li className='portfolio__list-item'>
           <a
-            className='portfolio__link'
+            className='portfolio__link link'
             href='https://github.com/DaoNik/how-to-learn'
           >
             Статичный сайт
@@ -18,7 +18,7 @@ function Portfolio() {
         <hr className='portfolio__hr' />
         <li className='portfolio__list-item'>
           <a
-            className='portfolio__link'
+            className='portfolio__link link'
             href='https://github.com/DaoNik/russian-travel'
           >
             Адаптивный сайт
@@ -28,7 +28,7 @@ function Portfolio() {
         <hr className='portfolio__hr' />
         <li className='portfolio__list-item'>
           <a
-            className='portfolio__link'
+            className='portfolio__link link'
             href='https://github.com/DaoNik/react-mesto-api-full'
           >
             Одностраничное приложение

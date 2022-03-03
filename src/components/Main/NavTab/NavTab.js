@@ -6,14 +6,17 @@ import logo from '../../../images/logo.svg';
 function NavTab() {
   return (
     <header className='navtab'>
-      <a href='/' className='navtab__logo'>
+      <a href='/' className='navtab__logo link'>
         <img src={logo} alt='логотип проекта' />
       </a>
       <nav className='navtab__nav'>
-        <a href='/signup' className='navtab__link'>
+        <a href='/signup' className='navtab__link link'>
           Регистрация
         </a>
-        <a href='/signin' className='navtab__link navtab__link_value-login'>
+        <a
+          href='/signin'
+          className='navtab__link navtab__link_value-login link'
+        >
           Войти
         </a>
       </nav>

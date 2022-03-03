@@ -11,18 +11,21 @@ function Footer() {
         <span>&copy; {new Date().getFullYear()}</span>
         <ul className='footer__nav'>
           <li>
-            <a className='footer__link' href='https://practicum.yandex.ru/'>
+            <a
+              className='footer__link link'
+              href='https://practicum.yandex.ru/'
+            >
               Яндекс Практикум
             </a>
           </li>
           <li>
-            <a className='footer__link' href='#'>
+            <a className='footer__link link' href='https://github.com/DaoNik'>
               Github
             </a>
           </li>
           <li>
-            <a className='footer__link' href='#'>
-              Facebook
+            <a className='footer__link link' href='https://vk.com/daonik'>
+              VK
             </a>
           </li>
         </ul>

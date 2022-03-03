@@ -9,3 +9,7 @@
   color: #fff;
   font-family: 'Inter', 'Arial', sans-serif;
 }
+
+.link:hover {
+  opacity: 0.6;
+}

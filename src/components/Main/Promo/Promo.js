@@ -12,7 +12,7 @@ function Promo() {
         <p className='promo__caption'>
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <a className='promo__link' href='#about'>
+        <a className='promo__link link' href='#about'>
           Узнать&nbsp;больше
         </a>
       </div>

@@ -20,12 +20,15 @@ function AboutMe() {
           </p>
           <ul className='about-me__links'>
             <li>
-              <a className='about-me__link' href='https://vk.com/daonik'>
+              <a className='about-me__link link' href='https://vk.com/daonik'>
                 VK
               </a>
             </li>
             <li>
-              <a className='about-me__link' href='https://github.com/DaoNik'>
+              <a
+                className='about-me__link link'
+                href='https://github.com/DaoNik'
+              >
                 Github
               </a>
             </li>
