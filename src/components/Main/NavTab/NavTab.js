@@ -1,11 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './NavTab.css';
+import logo from '../../../images/logo.svg';
 
 function NavTab() {
   return (
     <header className='navtab'>
-      <a href='/' className='navtab__logo'></a>
+      <a href='/' className='navtab__logo'>
+        <img src={logo} alt='логотип проекта' />
+      </a>
       <nav className='navtab__nav'>
         <a href='/signup' className='navtab__link'>
           Регистрация
