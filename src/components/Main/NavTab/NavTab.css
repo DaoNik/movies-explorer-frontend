@@ -1,4 +1,4 @@
-.header {
+.navtab {
   display: flex;
   justify-content: space-between;
   max-width: 100%;
@@ -7,25 +7,25 @@
   background-color: #073042;
 }
 
-.header__logo {
+.navtab__logo {
   width: 38px;
   height: 38px;
-  background-image: url(../../images/logo.svg);
+  background-image: url(../../../images/logo.svg);
 }
 
-.header__nav {
+.navtab__nav {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-.header__link {
+.navtab__link {
   padding: 8px 20px;
   text-decoration: none;
   color: white;
 }
 
-.header__link_value-login {
+.navtab__link_value-login {
   color: black;
   background-color: #3ddc84;
   border-radius: 3px;

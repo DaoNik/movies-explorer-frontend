@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Header/Header';
+import NavTab from './NavTab/NavTab';
 import Promo from './Promo/Promo';
 import AboutProject from './AboutProject/AboutProject';
 import Techs from './Techs/Techs';
@@ -9,7 +9,7 @@ import Portfolio from './Portfolio/Portfolio';
 function Main() {
   return (
     <>
-      <Header />
+      <NavTab />
       <main>
         <Promo />
         <AboutProject />
