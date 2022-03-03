@@ -1,23 +1,32 @@
 .footer {
   max-width: 92%;
+  width: 1140px;
   margin: 0 auto;
+  margin-top: 59px;
+  font-size: 13px;
 }
 
 .footer__title {
   color: #8b8b8b;
   text-align: center;
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid #000;
 }
 
 .footer__menu {
   display: flex;
   justify-content: space-between;
   color: #fff;
+  max-height: 56px;
+  padding: 20px 0;
 }
 
 .footer__nav {
   display: flex;
   list-style: none;
   margin: 0;
+  padding: 0;
   gap: 20px;
 }
 
