@@ -18,7 +18,7 @@ function Header() {
           Сохранённые фильмы
         </a>
         <a href='/profile' className='header__link header__link_value-acc link'>
-          Аккаунт{' '}
+          Аккаунт
           <img
             className='header__img-profile'
             src={profile}
