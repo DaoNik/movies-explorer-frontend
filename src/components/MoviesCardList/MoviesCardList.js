@@ -1,7 +1,8 @@
 import React from 'react';
+import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function SavedMovies() {
+function MoviesCardList() {
   function createCards(n) {
     const arrCards = [];
     for (let i = 0; i < n; i++) {
@@ -12,10 +13,10 @@ function SavedMovies() {
 
   return (
     <section className='gallery'>
-      <ul className='gallery__list'>{createCards(3)}</ul>
+      <ul className='gallery__list'>{createCards(21)}</ul>
       <button className='gallery__button'>Ещё</button>
     </section>
   );
 }
 
-export default SavedMovies;
+export default MoviesCardList;

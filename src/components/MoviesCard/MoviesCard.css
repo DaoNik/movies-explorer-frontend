@@ -1,0 +1,52 @@
+.gallery__list-item {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  grid-template-rows: 1fr 1fr 203px;
+}
+
+.gallery__list-title {
+  grid-column: 1 / 2;
+  grid-row: 1/ 2;
+  max-width: 280px;
+  margin: 14px 0 9px 14px;
+
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.gallery__list-subtitle {
+  grid-column: 1 / 2;
+  grid-row: 2/3;
+  margin: 0;
+  margin-left: 14px;
+
+  color: #8b8b8b;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.gallery__list-item-button {
+  grid-column: 2 / 3;
+  grid-row: 1/ 3;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+
+  background-color: #313131;
+  background-image: url(../../images/bookmark.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 50%;
+}
+
+.gallery__list-item-button_active {
+  background-color: #3ddc84;
+  background-image: url(../../images/bookmark_active.svg);
+}
+
+.gallery__item-image {
+  grid-column: 1/ 3;
+  grid-row: 3/ 4;
+}
