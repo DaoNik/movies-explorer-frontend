@@ -16,7 +16,11 @@ function Promo() {
           Узнать&nbsp;больше
         </a>
       </div>
-      <img src={webPlanet} alt='Планета из надписей WEB' />
+      <img
+        src={webPlanet}
+        alt='Планета из надписей WEB'
+        className='promo__img'
+      />
     </section>
   );
 }
