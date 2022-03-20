@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Footer from '../Footer/Footer';
 
 function Movies({ saved }) {
   return (
@@ -13,6 +14,7 @@ function Movies({ saved }) {
         <SearchForm />
         {saved ? <SavedMovies /> : <MoviesCardList />}
       </main>
+      <Footer />
     </>
   );
 }

@@ -7,6 +7,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
+import Page404 from '../Page404/Page404';
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/signin' element={<Login />} />
         <Route path='/signup' element={<Register />} />
+        <Route path='*' element={<Page404 />} />
       </Routes>
-      <Footer />
     </>
   );
 }
