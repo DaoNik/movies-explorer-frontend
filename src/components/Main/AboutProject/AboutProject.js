@@ -30,13 +30,13 @@ function AboutProject() {
           <p className='about-project__time about-project__time_front'>
             1 неделя
           </p>
-          <p>Back-end</p>
+          <p className='about-project__profession'>Back-end</p>
         </div>
         <div className='about-project__front'>
           <p className='about-project__time about-project__time_back'>
             4 недели
           </p>
-          <p>Front-end</p>
+          <p className='about-project__profession'>Front-end</p>
         </div>
       </section>
     </section>
