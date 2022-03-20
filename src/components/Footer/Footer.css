@@ -1,9 +1,11 @@
 .footer {
-  max-width: 92%;
-  width: 1140px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 70px;
   margin: 0 auto;
   margin-top: 59px;
   font-size: 13px;
+  line-height: 16px;
 }
 
 .footer__title {
@@ -18,7 +20,6 @@
   display: flex;
   justify-content: space-between;
   color: #fff;
-  max-height: 56px;
   padding: 20px 0;
 }
 
@@ -33,4 +34,39 @@
 .footer__link {
   color: #fff;
   text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__menu {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    padding-bottom: 10px;
+  }
+
+  .footer__nav {
+    flex-direction: column;
+    text-align: center;
+    margin: 30px 0;
+    gap: 12px;
+    order: -1;
+  }
+
+  .footer__date {
+    color: #8b8b8b;
+  }
 }

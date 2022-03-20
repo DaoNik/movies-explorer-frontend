@@ -8,7 +8,7 @@ function Footer() {
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className='footer__menu'>
-        <span>&copy; {new Date().getFullYear()}</span>
+        <span className='footer__date'>&copy; {new Date().getFullYear()}</span>
         <ul className='footer__nav'>
           <li>
             <a
