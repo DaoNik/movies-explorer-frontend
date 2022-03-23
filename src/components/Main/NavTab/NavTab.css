@@ -19,7 +19,6 @@
 }
 
 .navtab__link {
-  padding: 8px 20px;
   text-decoration: none;
   color: white;
   font-weight: 500;
@@ -31,6 +30,7 @@
   color: black;
   background-color: #3ddc84;
   border-radius: 3px;
+  padding: 8px 20px;
 }
 
 @media screen and (max-width: 768px) {

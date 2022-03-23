@@ -35,3 +35,37 @@
   padding: 8px 7.25px;
   background-color: #313131;
 }
+
+.header__btn {
+  display: none;
+  background-color: inherit;
+  border: none;
+  width: 44px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 18px 30px;
+  }
+
+  .header__link {
+    display: none;
+  }
+
+  .header__btn {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header {
+    padding: 18px 14px;
+  }
+
+  .header__btn {
+    width: 40px;
+    height: 43px;
+  }
+}

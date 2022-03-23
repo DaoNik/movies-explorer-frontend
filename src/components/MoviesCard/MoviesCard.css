@@ -1,7 +1,9 @@
 .gallery__list-item {
   display: grid;
-  grid-template-columns: 1fr 30px;
+  grid-template-columns: 1fr 44px;
   grid-template-rows: 1fr 1fr 203px;
+  max-width: 364px;
+  width: 100%;
 }
 
 .gallery__list-title {
@@ -49,4 +51,10 @@
 .gallery__item-image {
   grid-column: 1/ 3;
   grid-row: 3/ 4;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery__list-item {
+    max-width: 364px;
+  }
 }

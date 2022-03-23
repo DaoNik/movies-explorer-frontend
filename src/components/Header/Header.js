@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 import logo from '../../images/logo.svg';
 import profile from '../../images/profile.svg';
+import sidebar_icon from '../../images/sidebar_icon.svg';
 
 function Header() {
   return (
@@ -11,20 +12,26 @@ function Header() {
         <img src={logo} alt='логотип проекта' />
       </a>
       <nav className='header__nav'>
-        <a href='/movies' className='header__link link'>
+        <NavLink to='/movies' className='header__link link'>
           Фильмы
-        </a>
-        <a href='/saved-movies' className='header__link link'>
+        </NavLink>
+        <NavLink to='/saved-movies' className='header__link link'>
           Сохранённые фильмы
-        </a>
-        <a href='/profile' className='header__link header__link_value-acc link'>
+        </NavLink>
+        <NavLink
+          to='/profile'
+          className='header__link header__link_value-acc link'
+        >
           Аккаунт
           <img
             className='header__img-profile'
             src={profile}
             alt='изображение фигуры человека'
           />
-        </a>
+        </NavLink>
+        <button className='header__btn' type='button'>
+          <img src={sidebar_icon} alt='кнопка открытия бокового меню' />
+        </button>
       </nav>
     </header>
   );
