@@ -1,5 +1,6 @@
 .gallery {
   max-width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 70px 0 80px;
 }
@@ -36,5 +37,11 @@
   .gallery__list {
     column-gap: 30px;
     row-gap: 36px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .gallery__list {
+    gap: 16px;
   }
 }
