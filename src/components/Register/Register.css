@@ -45,6 +45,7 @@
 
 .register__error {
   margin: 0;
+  margin-top: -10px;
 
   font-size: 10px;
   line-height: 12px;
@@ -85,4 +86,37 @@
 
   color: #4285f4;
   text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    margin: 232px auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .register {
+    max-width: 260px;
+    margin: 56px auto 30px;
+    align-items: center;
+  }
+
+  .register__title {
+    margin: 50px 0 80px;
+  }
+
+  .register__submit {
+    margin-top: 157px 0 14px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__question {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__submit_login {
+    margin-top: 267px;
+  }
 }

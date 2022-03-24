@@ -31,6 +31,7 @@ function Register() {
           <input
             className='register__input'
             name='register-pass'
+            type='password'
             id='register-pass'
           />
           <p className='register__error'>Что-то пошло не так...</p>
