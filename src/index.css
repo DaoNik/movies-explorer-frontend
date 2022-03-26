@@ -1,5 +1,5 @@
 @import url(./vendor/normalize.css);
-@import url(./vendor/Inter_Web/inter.css);
+@import url(./fonts/Inter_Web/inter.css);
 
 .page {
   padding: 0;
@@ -12,5 +12,5 @@
 }
 
 .link:hover {
-  opacity: 0.6;
+  opacity: 0.8;
 }

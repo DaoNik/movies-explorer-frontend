@@ -4,8 +4,18 @@ import './Header.css';
 import logo from '../../images/logo.svg';
 import profile from '../../images/profile.svg';
 import sidebar_icon from '../../images/sidebar_icon.svg';
+import Navigation from '../Navigation/Navigation';
 
 function Header() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  function openSidebar() {
+    setIsOpen(true);
+  }
+
+  function closeSidebar() {
+    setIsOpen(false);
+  }
+
   return (
     <header className='header'>
       <a href='/' className='header__logo link'>
@@ -29,10 +39,11 @@ function Header() {
             alt='изображение фигуры человека'
           />
         </NavLink>
-        <button className='header__btn' type='button'>
+        <button onClick={openSidebar} className='header__btn' type='button'>
           <img src={sidebar_icon} alt='кнопка открытия бокового меню' />
         </button>
       </nav>
+      <Navigation closeSidebar={closeSidebar} isOpen={isOpen} />
     </header>
   );
 }

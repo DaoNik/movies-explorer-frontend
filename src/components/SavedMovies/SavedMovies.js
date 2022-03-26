@@ -5,7 +5,7 @@ function SavedMovies() {
   function createCards(n) {
     const arrCards = [];
     for (let i = 0; i < n; i++) {
-      arrCards[i] = <MoviesCard key={i} />;
+      arrCards[i] = <MoviesCard saved={true} key={i} />;
     }
     return arrCards;
   }

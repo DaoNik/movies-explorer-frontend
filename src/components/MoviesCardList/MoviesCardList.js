@@ -6,7 +6,11 @@ function MoviesCardList() {
   function createCards(n) {
     const arrCards = [];
     for (let i = 0; i < n; i++) {
-      arrCards[i] = <MoviesCard key={i} />;
+      if (i % 2 === 0) {
+        arrCards[i] = <MoviesCard saved={false} active={true} key={i} />;
+      } else {
+        arrCards[i] = <MoviesCard saved={false} active={false} key={i} />;
+      }
     }
     return arrCards;
   }

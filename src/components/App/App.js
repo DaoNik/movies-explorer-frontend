@@ -6,7 +6,6 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import Footer from '../Footer/Footer';
 import Page404 from '../Page404/Page404';
 
 function App() {

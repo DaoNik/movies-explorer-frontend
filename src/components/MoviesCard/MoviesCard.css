@@ -37,16 +37,24 @@
   height: 30px;
 
   background-color: #313131;
-  background-image: url(../../images/bookmark.svg);
   background-repeat: no-repeat;
   background-position: center;
   border: none;
   border-radius: 50%;
 }
 
+.gallery__list-item-button_saved {
+  background-image: url(../../images/bookmark.svg);
+}
+
 .gallery__list-item-button_active {
   background-color: #3ddc84;
   background-image: url(../../images/bookmark_active.svg);
+}
+
+.gallery__delete-button {
+  background-image: url(../../images/close-sidebar.svg);
+  background-size: 11.32px;
 }
 
 .gallery__item-image {
