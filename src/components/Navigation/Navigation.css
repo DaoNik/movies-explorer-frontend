@@ -1,23 +1,32 @@
 .sidebar {
-  display: none;
-  min-width: 320px;
-  max-width: 520px;
-  max-height: 100vh;
-  height: 100%;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
   top: 0;
+  left: 0;
   bottom: 0;
   right: 0;
   z-index: 2;
   box-sizing: border-box;
-  background-color: #202020;
-  position: fixed;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: flex-end;
+  display: none;
 }
 
-.is-open {
+.sidebar__container {
+  min-width: 320px;
+  max-width: 520px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #202020;
+  height: 100%;
+  z-index: 2;
+  position: relative;
+}
+
+.sidebar_opened {
   display: flex;
 }
 
