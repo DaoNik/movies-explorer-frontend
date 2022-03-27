@@ -13,7 +13,6 @@ function SavedMovies() {
   return (
     <section className='gallery'>
       <ul className='gallery__list'>{createCards(3)}</ul>
-      <button className='gallery__button'>Ещё</button>
     </section>
   );
 }
