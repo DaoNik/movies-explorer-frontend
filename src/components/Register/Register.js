@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Register.css';
 
@@ -40,9 +41,9 @@ function Register() {
           </button>
           <p className='register__question'>
             Уже зарегистрированы?{' '}
-            <a href='/signin' className='link register__link'>
+            <NavLink to='/signin' className='link register__link'>
               Войти
-            </a>
+            </NavLink>
           </p>
         </form>
       </main>

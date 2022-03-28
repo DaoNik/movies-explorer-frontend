@@ -14,17 +14,29 @@ function Footer() {
             <a
               className='footer__link link'
               href='https://practicum.yandex.ru/'
+              target='_blank'
+              rel='noreferrer'
             >
               Яндекс Практикум
             </a>
           </li>
           <li>
-            <a className='footer__link link' href='https://github.com/DaoNik'>
+            <a
+              className='footer__link link'
+              href='https://github.com/DaoNik'
+              target='_blank'
+              rel='noreferrer'
+            >
               Github
             </a>
           </li>
           <li>
-            <a className='footer__link link' href='https://vk.com/daonik'>
+            <a
+              className='footer__link link'
+              href='https://vk.com/daonik'
+              target='_blank'
+              rel='noreferrer'
+            >
               VK
             </a>
           </li>

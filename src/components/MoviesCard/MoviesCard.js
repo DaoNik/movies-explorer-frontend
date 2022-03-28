@@ -8,7 +8,7 @@ function MoviesCard({ saved, active }) {
       <h3 className='gallery__list-title'>33 слова о дизайне</h3>
       <p className='gallery__list-subtitle'>1ч 47м</p>
       <button
-        className={`gallery__list-item-button ${
+        className={`gallery__list-item-button link ${
           saved ? 'gallery__delete-button' : ''
         } ${
           active

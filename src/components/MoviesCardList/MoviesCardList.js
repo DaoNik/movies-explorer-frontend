@@ -18,7 +18,7 @@ function MoviesCardList() {
   return (
     <section className='gallery'>
       <ul className='gallery__list'>{createCards(21)}</ul>
-      <button className='gallery__button'>Ещё</button>
+      <button className='gallery__button link'>Ещё</button>
     </section>
   );
 }

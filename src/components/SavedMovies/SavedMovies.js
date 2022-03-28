@@ -11,7 +11,7 @@ function SavedMovies() {
   }
 
   return (
-    <section className='gallery'>
+    <section className='gallery gallery_saved'>
       <ul className='gallery__list'>{createCards(3)}</ul>
     </section>
   );

@@ -18,9 +18,9 @@ function Header() {
 
   return (
     <header className='header'>
-      <a href='/' className='header__logo link'>
+      <NavLink to='/' className='header__logo link'>
         <img src={logo} alt='логотип проекта' />
-      </a>
+      </NavLink>
       <nav className='header__nav'>
         <NavLink to='/movies' className='header__link link'>
           Фильмы
@@ -39,7 +39,11 @@ function Header() {
             alt='изображение фигуры человека'
           />
         </NavLink>
-        <button onClick={openSidebar} className='header__btn' type='button'>
+        <button
+          onClick={openSidebar}
+          className='header__btn link'
+          type='button'
+        >
           <img src={sidebar_icon} alt='кнопка открытия бокового меню' />
         </button>
       </nav>

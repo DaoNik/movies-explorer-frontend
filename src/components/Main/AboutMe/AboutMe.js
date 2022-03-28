@@ -20,7 +20,12 @@ function AboutMe() {
           </p>
           <ul className='about-me__links'>
             <li>
-              <a className='about-me__link link' href='https://vk.com/daonik'>
+              <a
+                target='_blank'
+                rel='noreferrer'
+                className='about-me__link link'
+                href='https://vk.com/daonik'
+              >
                 VK
               </a>
             </li>
@@ -28,6 +33,8 @@ function AboutMe() {
               <a
                 className='about-me__link link'
                 href='https://github.com/DaoNik'
+                target='_blank'
+                rel='noreferrer'
               >
                 Github
               </a>
