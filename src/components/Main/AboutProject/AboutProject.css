@@ -1,0 +1,154 @@
+.about-project {
+  padding: 110px 70px;
+  background-color: #202020;
+}
+
+.about-project__title {
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+
+  margin: 0;
+  margin-bottom: 70px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #dadada;
+}
+
+.about-project__info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 110px;
+}
+
+.about-project__info {
+  max-width: 550px;
+}
+
+.about-project__info-title {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+
+  margin: 0;
+  margin-bottom: 26px;
+}
+
+.about-project__info-content {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__stages {
+  display: flex;
+  text-align: center;
+}
+
+.about-project__back {
+  width: 228px;
+}
+
+.about-project__front {
+  width: 912px;
+}
+
+.about-project__time {
+  font-size: 14px;
+  line-height: 17px;
+  padding: 9px 0;
+}
+
+.about-project__time_front {
+  background-color: #3ddc84;
+  color: black;
+}
+
+.about-project__time_back {
+  background-color: #303030;
+}
+
+.about-project__profession {
+  margin: 0;
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #8b8b8b;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__info-container {
+    gap: 30px;
+    margin-bottom: 90px;
+  }
+
+  .about-project__info-content {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__back {
+    width: 140px;
+  }
+
+  .about-project__front {
+    width: 528px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+    margin-bottom: 60px;
+  }
+
+  .about-project__info-container {
+    flex-wrap: wrap;
+    gap: 56px;
+    margin-bottom: 60px;
+  }
+
+  .about-project__info-title {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__info-content {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__back {
+    width: 100px;
+  }
+
+  .about-project__front {
+    width: 184px;
+  }
+
+  .about-project__time {
+    font-size: 11px;
+    line-height: 13px;
+    padding: 11px 0;
+  }
+
+  .about-project__profession {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  }
+}

@@ -1,0 +1,56 @@
+.navtab {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 18px 70px;
+  background-color: #073042;
+}
+
+.navtab__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.navtab__nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navtab__link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.navtab__link_value-login {
+  color: black;
+  background-color: #3ddc84;
+  border-radius: 3px;
+  padding: 8px 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .navtab {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .navtab {
+    padding-right: 14px;
+    padding-right: 14px;
+  }
+
+  .navtab__nav {
+    gap: 14px;
+  }
+
+  .navtab__link {
+    font-size: 10px;
+  }
+}
