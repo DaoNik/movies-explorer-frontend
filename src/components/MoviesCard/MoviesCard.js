@@ -1,12 +1,24 @@
 import React from 'react';
 import './MoviesCard.css';
-import filmPreview from '../../images/film-preview.png';
 
-function MoviesCard({ saved, active }) {
+function MoviesCard({ saved, active, movie }) {
+  console.log(movie);
+  const { nameRU: title, duration, image } = movie;
+
+  function newDuration(duration) {
+    let newDuration;
+    if (duration > 60) {
+      newDuration = `${Math.floor(duration / 60)}ч ${duration % 60}м`;
+      return newDuration;
+    }
+    newDuration = `${duration % 60}м`;
+    return newDuration;
+  }
+
   return (
     <li className='gallery__list-item'>
-      <h3 className='gallery__list-title'>33 слова о дизайне</h3>
-      <p className='gallery__list-subtitle'>1ч 47м</p>
+      <h3 className='gallery__list-title'>{title}</h3>
+      <p className='gallery__list-subtitle'>{newDuration(duration)}</p>
       <button
         className={`gallery__list-item-button link ${
           saved ? 'gallery__delete-button' : ''
@@ -20,7 +32,7 @@ function MoviesCard({ saved, active }) {
       ></button>
       <img
         className='gallery__item-image'
-        src={filmPreview}
+        src={`https://api.nomoreparties.co/${image.url}`}
         alt='Картинка карточки'
       ></img>
     </li>

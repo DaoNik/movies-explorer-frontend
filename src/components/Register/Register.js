@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Register.css';
 
-function Register() {
+function Register({ onSubmit }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleChangeName(e) {
+    setName(e.target.value);
+  }
+
+  function handleChangeEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function handleChangePassword(e) {
+    setPassword(e.target.value);
+  }
+
+  function handleRegister(e) {
+    e.preventDefault();
+
+    onSubmit(name, email, password);
+  }
+
   return (
     <>
       <main className='register'>
         <h1 className='register__title'>Добро пожаловать!</h1>
         <img className='register__logo' src={logo} alt='Логотип' />
-        <form className='register__form'>
+        <form className='register__form' onSubmit={handleRegister}>
           <label htmlFor='register-name' className='register__label'>
             Имя
           </label>
@@ -17,6 +39,8 @@ function Register() {
             className='register__input'
             name='register-name'
             id='register-name'
+            value={name}
+            onChange={handleChangeName}
           />
           <label htmlFor='register-email' className='register__label'>
             E-mail
@@ -25,6 +49,8 @@ function Register() {
             className='register__input'
             name='register-email'
             id='register-email'
+            value={email}
+            onChange={handleChangeEmail}
           />
           <label htmlFor='register-pass' className='register__label'>
             Пароль
@@ -34,6 +60,8 @@ function Register() {
             name='register-pass'
             type='password'
             id='register-pass'
+            value={password}
+            onChange={handleChangePassword}
           />
           <p className='register__error'>Что-то пошло не так...</p>
           <button className='register__submit' type='submit'>

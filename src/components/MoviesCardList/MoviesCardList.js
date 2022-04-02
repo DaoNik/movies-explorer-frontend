@@ -2,15 +2,23 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList() {
+function MoviesCardList({ movies }) {
+  const windowInnerWidth = window.innerWidth;
+  console.log(windowInnerWidth);
   function createCards(n) {
     const arrCards = [];
+    if (!movies || movies.length === 0) {
+      return arrCards;
+    }
     for (let i = 0; i < n; i++) {
-      if (i % 2 === 0) {
-        arrCards[i] = <MoviesCard saved={false} active={true} key={i} />;
-      } else {
-        arrCards[i] = <MoviesCard saved={false} active={false} key={i} />;
-      }
+      arrCards[i] = (
+        <MoviesCard
+          saved={false}
+          active={true}
+          key={movies[i].id}
+          movie={movies[i]}
+        />
+      );
     }
     return arrCards;
   }
