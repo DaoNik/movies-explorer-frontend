@@ -7,8 +7,11 @@ import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function Main({ isLoggedIn }) {
+  const currentUser = React.useContext(CurrentUserContext);
+  console.log(currentUser);
   return (
     <>
       {isLoggedIn ? <Header isMain={true} /> : <NavTab />}

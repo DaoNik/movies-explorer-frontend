@@ -9,11 +9,33 @@ import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import mainApi from '../../utils/MainApi';
 import RequireAuth from '../RequireAuth/RequireAuth';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import PopupUpdateUser from '../PopupUpdateUser/PopupUpdateUser';
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    name: 'Аноним',
+  });
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
+
+  function handleClosePopup() {
+    setIsOpenPopup(false);
+  }
+
+  function handleUpdateUser(name) {
+    mainApi
+      .updateUser(name)
+      .then((res) => {
+        console.log(res);
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -25,7 +47,7 @@ function App() {
     mainApi
       .register(name, email, password)
       .then((res) => {
-        localStorage.setItem('user', JSON.stringify(res));
+        setCurrentUser(res);
         navigate('/signin');
       })
       .catch((err) => {
@@ -58,7 +80,7 @@ function App() {
   }
 
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route exact path='/' element={<Main isLoggedIn={isLoggedIn} />} />
         <Route path='/signin' element={<Login onSubmit={handleLogin} />} />
@@ -76,7 +98,12 @@ function App() {
                 } else if (location.pathname === '/saved-movies') {
                   return <Movies saved={true} />;
                 } else if (location.pathname === '/profile') {
-                  return <Profile onLogout={handleLogout} />;
+                  return (
+                    <Profile
+                      onLogout={handleLogout}
+                      setIsOpenPopup={setIsOpenPopup}
+                    />
+                  );
                 } else {
                   return <Page404 />;
                 }
@@ -86,7 +113,13 @@ function App() {
           }
         />
       </Routes>
-    </>
+
+      <PopupUpdateUser
+        isOpen={isOpenPopup}
+        onClose={handleClosePopup}
+        onSubmit={handleUpdateUser}
+      />
+    </CurrentUserContext.Provider>
   );
 }
 

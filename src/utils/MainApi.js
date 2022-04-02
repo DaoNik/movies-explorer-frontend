@@ -4,6 +4,10 @@ class MainApi {
     this._headers = options.headers;
   }
 
+  _getToken() {
+    return `Bearer ${localStorage.getItem('token')}`;
+  }
+
   _checkRequest(res) {
     if (res.ok) {
       return res.json();
@@ -31,6 +35,17 @@ class MainApi {
     }).then((response) => {
       return this._checkRequest(response);
     });
+  };
+
+  updateUser = (name) => {
+    return fetch(`${this._url}/users/me`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._getToken(),
+        ...this.headers,
+      },
+      body: JSON.stringify({ name }),
+    }).then((res) => this._checkRequest(res));
   };
 }
 
