@@ -2,7 +2,12 @@ import React from 'react';
 import Header from '../Header/Header';
 import './Profile.css';
 
-function Profile() {
+function Profile({ onLogout }) {
+  function handleLogout() {
+    console.log(onLogout);
+    onLogout();
+  }
+
   return (
     <>
       <Header />
@@ -23,7 +28,11 @@ function Profile() {
         >
           Редактировать
         </button>
-        <button className='profile__button profile__button_red' type='button'>
+        <button
+          onClick={handleLogout}
+          className='profile__button link profile__button_red'
+          type='button'
+        >
           Выйти из аккаунта
         </button>
       </main>

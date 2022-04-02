@@ -6,7 +6,7 @@ import profile from '../../images/profile.svg';
 import sidebar_icon from '../../images/sidebar_icon.svg';
 import Navigation from '../Navigation/Navigation';
 
-function Header() {
+function Header({ isMain }) {
   const [isOpen, setIsOpen] = React.useState(false);
   function openSidebar() {
     setIsOpen(true);
@@ -17,7 +17,7 @@ function Header() {
   }
 
   return (
-    <header className='header'>
+    <header className={`header ${isMain ? 'header_main' : ''}`}>
       <NavLink to='/' className='header__logo link'>
         <img src={logo} alt='логотип проекта' />
       </NavLink>

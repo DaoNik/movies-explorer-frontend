@@ -6,11 +6,12 @@ import Techs from './Techs/Techs';
 import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
-function Main() {
+function Main({ isLoggedIn }) {
   return (
     <>
-      <NavTab />
+      {isLoggedIn ? <Header isMain={true} /> : <NavTab />}
       <main>
         <Promo />
         <AboutProject />
