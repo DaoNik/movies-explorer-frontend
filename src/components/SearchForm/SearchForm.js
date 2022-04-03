@@ -2,20 +2,29 @@ import React from 'react';
 import './SearchForm.css';
 
 function SearchForm({
+  saved,
   searchValue,
   setSearchValue,
   searchMovies,
   isShortMovie,
   setIsShortMovie,
+  searchSavedMovies,
 }) {
   function handleChangeSearch(e) {
     setSearchValue(e.target.value);
   }
 
-  function onSubmit(e) {
+  function onSubmitMovies(e) {
     e.preventDefault();
 
     searchMovies();
+    setSearchValue('');
+  }
+
+  function onSubmitSavedMovies(e) {
+    e.preventDefault();
+
+    searchSavedMovies();
     setSearchValue('');
   }
 
@@ -25,7 +34,10 @@ function SearchForm({
 
   return (
     <section className='search'>
-      <form className='search__form' onSubmit={onSubmit}>
+      <form
+        className='search__form'
+        onSubmit={saved ? onSubmitSavedMovies : onSubmitMovies}
+      >
         <div className='search__search-container'>
           <input
             placeholder='Фильм'

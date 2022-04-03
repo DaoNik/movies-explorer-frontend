@@ -20,6 +20,26 @@ function Movies({ saved }) {
     mainApi
       .saveMovie(movie)
       .then((res) => {
+        setAllMovies((state) =>
+          state.map((c) => {
+            if (c.id === res.movieId) {
+              console.log(c);
+              c._id = res._id;
+              console.log(c);
+            }
+            return c;
+          })
+        );
+        setMovies((state) =>
+          state.map((c) => {
+            if (c.id === res.movieId) {
+              console.log(c);
+              c._id = res._id;
+              console.log(c);
+            }
+            return c;
+          })
+        );
         setSavedMovies([res, ...savedMovies]);
       })
       .catch((err) => console.log(err));
@@ -57,7 +77,6 @@ function Movies({ saved }) {
 
   function searchMovies() {
     const result = allMovies.filter((movie) => {
-      console.log(movie);
       return (
         (movie.nameRU?.includes(searchValue) ||
           movie.nameEN?.includes(searchValue) ||
@@ -74,9 +93,21 @@ function Movies({ saved }) {
       });
       return movie;
     });
-    console.log(result, allMovies);
     localStorage.setItem('movies', JSON.stringify(result));
     setMovies([...result]);
+  }
+
+  function searchSavedMovies() {
+    const result = savedMovies.filter((movie) => {
+      return (
+        (movie.nameRU?.includes(searchValue) ||
+          movie.nameEN?.includes(searchValue) ||
+          movie.description?.includes(searchValue)) &&
+        (isShortMovie ? true : movie.duration > 40)
+      );
+    });
+    localStorage.setItem('saveMovies', JSON.stringify(result));
+    setSavedMovies([...result]);
   }
 
   console.log(movies);
@@ -86,11 +117,13 @@ function Movies({ saved }) {
       <Header />
       <main className='movies'>
         <SearchForm
+          saved={saved}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchMovies={searchMovies}
           isShortMovie={isShortMovie}
           setIsShortMovie={setIsShortMovie}
+          searchSavedMovies={searchSavedMovies}
         />
         {saved ? (
           <SavedMovies
@@ -100,7 +133,7 @@ function Movies({ saved }) {
           />
         ) : (
           <MoviesCardList
-            movies={JSON.parse(localStorage.getItem('movies'))}
+            movies={movies}
             saveMovie={saveMovie}
             deleteMovie={deleteMovie}
           />
