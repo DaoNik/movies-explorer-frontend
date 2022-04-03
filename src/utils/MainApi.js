@@ -58,6 +58,18 @@ class MainApi {
     });
   };
 
+  deleteMovie = (movieId) => {
+    return fetch(`${this._url}/movies/${movieId}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._getToken(),
+        ...this._headers,
+      },
+    }).then((res) => {
+      return this._checkRequest(res);
+    });
+  };
+
   register = (name, email, password) => {
     console.log(name, email, password);
     return fetch(`${this._url}/signup`, {

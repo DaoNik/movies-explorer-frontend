@@ -2,7 +2,7 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ movies }) {
+function MoviesCardList({ movies, saveMovie, deleteMovie }) {
   const windowInnerWidth = window.innerWidth;
   console.log(windowInnerWidth);
   function createCards(n) {
@@ -14,9 +14,11 @@ function MoviesCardList({ movies }) {
       arrCards[i] = (
         <MoviesCard
           saved={false}
-          active={false}
+          active={movies[i].saved}
           key={movies[i].id}
           movie={movies[i]}
+          saveMovie={saveMovie}
+          deleteMovie={deleteMovie}
         />
       );
     }
