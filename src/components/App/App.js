@@ -18,22 +18,27 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     name: 'Аноним',
+    email: '',
   });
   const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState('');
+  const [errorLogin, setErrorLogin] = useState('');
+  const [errorRegister, setErrorRegister] = useState('');
 
   function handleClosePopup() {
     setIsOpenPopup(false);
   }
 
-  function handleUpdateUser(name) {
+  function handleUpdateUser(name, email) {
     mainApi
-      .updateUser(name)
+      .updateUser(name, email)
       .then((res) => {
-        console.log(res);
+        setErrorPopup('');
         setCurrentUser(res);
+        setIsOpenPopup(false);
       })
       .catch((err) => {
-        console.log(err);
+        setErrorPopup(err);
       });
   }
 
@@ -51,11 +56,7 @@ function App() {
         navigate('/signin');
       })
       .catch((err) => {
-        if (err.statusCode === '400') {
-          console.log('некорректно заполнено одно из полей');
-        } else {
-          console.log(`Ошибка: ${err}`);
-        }
+        setErrorRegister(err);
       });
   }
 
@@ -63,12 +64,16 @@ function App() {
     mainApi
       .login(email, password)
       .then((res) => {
-        localStorage.setItem('token', JSON.stringify(res.token));
+        const { token, name } = res;
+        localStorage.setItem('email', email);
+        setCurrentUser({ name, email });
+        localStorage.setItem('token', token);
+
         setIsLoggedIn(true);
         navigate('/');
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`);
+        setErrorLogin(err);
       });
   }
 
@@ -76,17 +81,32 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setIsLoggedIn(false);
-    navigate('/');
+    navigate('/signin');
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route exact path='/' element={<Main isLoggedIn={isLoggedIn} />} />
-        <Route path='/signin' element={<Login onSubmit={handleLogin} />} />
+        <Route
+          path='/signin'
+          element={
+            <Login
+              onSubmit={handleLogin}
+              errorLogin={errorLogin}
+              setErrorLogin={setErrorLogin}
+            />
+          }
+        />
         <Route
           path='/signup'
-          element={<Register onSubmit={handleRegister} />}
+          element={
+            <Register
+              onSubmit={handleRegister}
+              errorRegister={errorRegister}
+              setErrorRegister={setErrorRegister}
+            />
+          }
         />
         <Route
           path='*'
@@ -118,6 +138,8 @@ function App() {
         isOpen={isOpenPopup}
         onClose={handleClosePopup}
         onSubmit={handleUpdateUser}
+        errorPopup={errorPopup}
+        setErrorPopup={setErrorPopup}
       />
     </CurrentUserContext.Provider>
   );

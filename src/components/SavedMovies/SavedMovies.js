@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import mainApi from '../../utils/MainApi';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function SavedMovies({ movies }) {
-  function createCards(n) {
+function SavedMovies({ movies, isSavedMovies }) {
+  function createCards(movies) {
     const arrCards = [];
     if (!movies || movies.length === 0) {
       return arrCards;
     }
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < movies.length; i++) {
       arrCards[i] = (
         <MoviesCard
           saved={true}
@@ -22,7 +23,9 @@ function SavedMovies({ movies }) {
 
   return (
     <section className='gallery gallery_saved'>
-      <ul className='gallery__list'>{createCards(3)}</ul>
+      <ul className='gallery__list'>
+        {isSavedMovies ? createCards(movies) : 'К сожалению, ничего не найдено'}
+      </ul>
     </section>
   );
 }

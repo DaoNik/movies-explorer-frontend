@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Register.css';
 
-function Register({ onSubmit }) {
+function Register({ onSubmit, errorRegister, setErrorRegister }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,6 +39,8 @@ function Register({ onSubmit }) {
             className='register__input'
             name='register-name'
             id='register-name'
+            minLength='2'
+            maxLength='30'
             value={name}
             onChange={handleChangeName}
           />
@@ -49,6 +51,7 @@ function Register({ onSubmit }) {
             className='register__input'
             name='register-email'
             id='register-email'
+            required
             value={email}
             onChange={handleChangeEmail}
           />
@@ -60,10 +63,11 @@ function Register({ onSubmit }) {
             name='register-pass'
             type='password'
             id='register-pass'
+            required
             value={password}
             onChange={handleChangePassword}
           />
-          <p className='register__error'>Что-то пошло не так...</p>
+          <p className='register__error'>{errorRegister}</p>
           <button className='register__submit' type='submit'>
             Зарегистрироваться
           </button>

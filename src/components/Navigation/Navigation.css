@@ -44,6 +44,11 @@
   border-bottom: 2px solid #fff;
 }
 
+.sidebar__link-profile_active {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #fff;
+}
+
 .sidebar__link_value-acc {
   position: absolute;
   bottom: 48px;

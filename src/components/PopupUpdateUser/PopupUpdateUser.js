@@ -1,28 +1,40 @@
 import React, { useState } from 'react';
 import './PopupUpdateUser.css';
 
-function PopupUpdateUser({ isOpen, onClose, onSubmit }) {
+function PopupUpdateUser({
+  isOpen,
+  onClose,
+  onSubmit,
+  errorPopup,
+  setErrorPopup,
+}) {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState(localStorage.getItem('email'));
 
   function handleChangeName(e) {
-    setName(e.target.name);
+    setName(e.target.value);
+    setErrorPopup('');
+  }
+
+  function handleChangeEmail(e) {
+    setEmail(e.target.value);
+    setErrorPopup('');
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    onSubmit(name);
+    onSubmit(name, email);
+    setName('');
   }
 
   return (
     <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
       <div className='popup__container'>
         <form className='popup__form' onSubmit={handleSubmit}>
-          <h2 className='popup__title'>Введите новое имя</h2>
+          <h2 className='popup__title'>Введите новые данные пользователя</h2>
           <input
             className='popup__input'
-            id='name'
-            name='name'
             type='text'
             placeholder='Никнейм'
             minLength='2'
@@ -32,6 +44,19 @@ function PopupUpdateUser({ isOpen, onClose, onSubmit }) {
             required
           />
           <span className='popup__error' id='name-error'></span>
+          <input
+            className='popup__input'
+            type='email'
+            placeholder='Email'
+            minLength='2'
+            maxLength='200'
+            value={email}
+            onChange={handleChangeEmail}
+            required
+          />
+          <span className='popup__error' id='name-error'>
+            {errorPopup}
+          </span>
           <button type='submit' className='popup__btn'>
             Изменить имя
           </button>

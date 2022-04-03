@@ -14,7 +14,7 @@ function MoviesCardList({ movies }) {
       arrCards[i] = (
         <MoviesCard
           saved={false}
-          active={true}
+          active={false}
           key={movies[i].id}
           movie={movies[i]}
         />

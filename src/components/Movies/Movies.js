@@ -6,9 +6,22 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import moviesApi from '../../utils/MoviesApi';
+import mainApi from '../../utils/MainApi';
 
 function Movies({ saved }) {
   const [movies, setMovies] = useState([]);
+  const [isSavedMovies, setIsSavedMovies] = useState(false);
+  const [savedMovies, setSavedMovies] = useState([]);
+
+  useEffect(() => {
+    mainApi
+      .getSavedMovies()
+      .then((res) => {
+        res.length ? setIsSavedMovies(true) : setIsSavedMovies(false);
+        setSavedMovies(res);
+      })
+      .catch((err) => setIsSavedMovies(false));
+  }, []);
 
   useEffect(() => {
     moviesApi
@@ -27,7 +40,7 @@ function Movies({ saved }) {
       <main className='movies'>
         <SearchForm />
         {saved ? (
-          <SavedMovies movies={movies} />
+          <SavedMovies movies={savedMovies} isSavedMovies={isSavedMovies} />
         ) : (
           <MoviesCardList movies={movies} />
         )}
