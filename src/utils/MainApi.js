@@ -105,7 +105,7 @@ class MainApi {
 }
 
 export default new MainApi({
-  url: 'http://localhost:3000',
+  url: 'https://api.daonik.nomoredomains.work',
   headers: {
     'Content-Type': 'application/json',
   },

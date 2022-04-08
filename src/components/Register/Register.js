@@ -30,7 +30,9 @@ function Register({ onSubmit, errorRegister, setErrorRegister }) {
     <>
       <main className='register'>
         <h1 className='register__title'>Добро пожаловать!</h1>
-        <img className='register__logo' src={logo} alt='Логотип' />
+        <NavLink to='/' className='link'>
+          <img className='register__logo' src={logo} alt='Логотип' />
+        </NavLink>
         <form className='register__form' onSubmit={handleRegister}>
           <label htmlFor='register-name' className='register__label'>
             Имя

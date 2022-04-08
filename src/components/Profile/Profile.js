@@ -19,15 +19,15 @@ function Profile({ onLogout, setIsOpenPopup }) {
     <>
       <Header />
       <main className='profile'>
-        <h2 className='profile__title'>Привет, {currentUser.name}!</h2>
+        <h2 className='profile__title'>Привет, {localStorage.getItem('name')}!</h2>
         <p className='profile__user-data'>
           <span>Имя</span>
-          <span>{currentUser.name}</span>
+          <span>{localStorage.getItem('name')}</span>
         </p>
         <hr className='profile__hr' />
         <p className='profile__user-data'>
           <span>E-mail</span>
-          <span>{currentUser.email}</span>
+          <span>{localStorage.getItem('email')}</span>
         </p>
         <button
           className='profile__button profile__button_margin'
