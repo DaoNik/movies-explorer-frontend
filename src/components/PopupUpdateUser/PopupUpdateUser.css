@@ -94,6 +94,15 @@
   cursor: pointer;
 }
 
+.popup__btn_disabled {
+  background-color: #8b8b8b;
+}
+
+.popup__btn_disabled:hover {
+  cursor: auto;
+  opacity: 1;
+}
+
 .popup__btn-closed {
   position: absolute;
   top: -36px;

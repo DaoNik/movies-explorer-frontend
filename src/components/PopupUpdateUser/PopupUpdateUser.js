@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './PopupUpdateUser.css';
 
 function PopupUpdateUser({
@@ -10,14 +10,47 @@ function PopupUpdateUser({
 }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState(localStorage.getItem('email'));
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    console.log('Работает')
+    if (emailError === '' &&
+      nameError === '' &&
+      (localStorage.getItem('name') !== name ||
+      localStorage.getItem('email') !== email)
+    ) {
+      setIsValid(true);
+    } else if ((localStorage.getItem('name') === name &&
+      localStorage.getItem('email') === email)) {
+      setErrorPopup('Значения не должны быть одинаковыми')
+      setIsValid(false);
+    } else {
+      setIsValid(false);
+    }
+  }, [name, email])
 
   function handleChangeName(e) {
     setName(e.target.value);
+    if (e.target.value.length >= 2 &&
+        e.target.value.length <= 30) {
+      setNameError('');
+    } else {
+      setNameError('Имя должно быть от 2 до 30 символов')
+    }
     setErrorPopup('');
   }
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
+    const regexp = /[a-zA-Z0-9]+@[a-z]+\.[a-z]+/;
+    if (regexp.test(e.target.value)) {
+      setEmailError('')
+    } else {
+      setEmailError('Неверно введена почта')
+    }
     setErrorPopup('');
   }
 
@@ -43,7 +76,7 @@ function PopupUpdateUser({
             onChange={handleChangeName}
             required
           />
-          <span className='popup__error' id='name-error'></span>
+          <span className='popup__error'>{nameError}</span>
           <input
             className='popup__input'
             type='email'
@@ -54,10 +87,11 @@ function PopupUpdateUser({
             onChange={handleChangeEmail}
             required
           />
-          <span className='popup__error' id='name-error'>
+          <span className='popup__error'>{emailError}</span>
+          <span className='popup__error'>
             {errorPopup}
           </span>
-          <button type='submit' className='popup__btn'>
+          <button type='submit' className={`popup__btn ${isValid ? '' : 'popup__btn_disabled'}`} disabled={!isValid}>
             Изменить имя
           </button>
         </form>
