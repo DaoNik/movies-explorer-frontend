@@ -6,7 +6,7 @@ function SavedMovies({ movies, isSavedMovies, deleteMovie }) {
   return (
     <section className='gallery gallery_saved'>
       <ul className='gallery__list'>
-        {isSavedMovies
+        {movies.length
           ? movies.map((movie) => {
               return (
                 <MoviesCard

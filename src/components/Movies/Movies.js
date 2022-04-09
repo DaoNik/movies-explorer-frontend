@@ -13,6 +13,7 @@ function Movies({ saved }) {
   const [allMovies, setAllMovies] = useState([]);
   const [isSavedMovies, setIsSavedMovies] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [allSavedMovies, setAllSavedMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [isShortMovie, setIsShortMovie] = useState(true);
 
@@ -75,7 +76,7 @@ function Movies({ saved }) {
       .getSavedMovies()
       .then((res) => {
         res.length ? setIsSavedMovies(true) : setIsSavedMovies(false);
-        setSavedMovies(res);
+        setAllSavedMovies(res);
       })
       .catch((err) => setIsSavedMovies(false));
   }, []);
@@ -112,7 +113,7 @@ function Movies({ saved }) {
   }
 
   function searchSavedMovies() {
-    const result = savedMovies.filter((movie) => {
+    const result = allSavedMovies.filter((movie) => {
       return (
         (movie.nameRU?.includes(searchValue) ||
           movie.nameEN?.includes(searchValue) ||
