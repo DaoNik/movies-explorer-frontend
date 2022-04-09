@@ -26,10 +26,9 @@ function Register({ onSubmit, errorRegister, setErrorRegister }) {
 
   function handleChangeName(e) {
     setName(e.target.value);
-    e.target.value.length === 0 ||
-    (e.target.value.length >= 2 && e.target.value.length <= 30) ?
+    e.target.value.length >= 2 && e.target.value.length <= 30 ?
       setNameError('') :
-      setNameError('Имя должно быть от 2 до 30 символов, либо пустым');
+      setNameError('Имя должно быть от 2 до 30 символов');
   }
 
   function handleChangeEmail(e) {
