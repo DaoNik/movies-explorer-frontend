@@ -23,9 +23,7 @@ function Movies({ saved }) {
         setAllMovies((state) =>
           state.map((c) => {
             if (c.id === res.movieId) {
-              console.log(c);
               c._id = res._id;
-              console.log(c);
             }
             return c;
           })
@@ -33,13 +31,12 @@ function Movies({ saved }) {
         setMovies((state) =>
           state.map((c) => {
             if (c.id === res.movieId) {
-              console.log(c);
               c._id = res._id;
-              console.log(c);
             }
             return c;
           })
         );
+        localStorage.setItem('movies', JSON.stringify(movies));
         setSavedMovies([res, ...savedMovies]);
       })
       .catch((err) => console.log(err));
@@ -49,6 +46,23 @@ function Movies({ saved }) {
     mainApi
       .deleteMovie(id)
       .then((res) => {
+        setAllMovies((state) =>
+          state.map((c) => {
+            if (c.id === res.movieId) {
+              delete c._id;
+            }
+            return c;
+          })
+        );
+        setMovies((state) =>
+          state.map((c) => {
+            if (c.id === res.movieId) {
+              delete c._id;
+            }
+            return c;
+          })
+        );
+        localStorage.setItem('movies', JSON.stringify(movies));
         setSavedMovies((state) => state.filter((c) => c._id !== id));
       })
       .catch((err) => {
@@ -133,7 +147,7 @@ function Movies({ saved }) {
           />
         ) : (
           <MoviesCardList
-            movies={movies}
+            movies={JSON.parse(localStorage.getItem('movies'))}
             saveMovie={saveMovie}
             deleteMovie={deleteMovie}
           />
