@@ -1,23 +1,46 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Register.css';
 
 function Register({ onSubmit, errorRegister, setErrorRegister }) {
   const [name, setName] = useState('');
+  const [nameError, setNameError] = useState('');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('')
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    if (email.length > 0 &&
+        password.length > 0 &&
+        emailError === '' &&
+        nameError === '') {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+    setErrorRegister('');
+  }, [name, email, password])
 
   function handleChangeName(e) {
     setName(e.target.value);
+    e.target.value.length === 0 ||
+    (e.target.value.length >= 2 && e.target.value.length <= 30) ?
+      setNameError('') :
+      setNameError('Имя должно быть от 2 до 30 символов, либо пустым');
   }
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
+    const regexp = /[a-zA-Z0-9]+@[a-z]+\.[a-z]+/;
+    regexp.test(e.target.value) ? setEmailError('') : setEmailError('Неверно введена почта');
   }
 
   function handleChangePassword(e) {
     setPassword(e.target.value);
+    e.target.value.length > 0 ? setPasswordError('') : setPasswordError('Не введен пароль');
   }
 
   function handleRegister(e) {
@@ -46,6 +69,7 @@ function Register({ onSubmit, errorRegister, setErrorRegister }) {
             value={name}
             onChange={handleChangeName}
           />
+          <p className='register__error'>{nameError}</p>
           <label htmlFor='register-email' className='register__label'>
             E-mail
           </label>
@@ -57,6 +81,7 @@ function Register({ onSubmit, errorRegister, setErrorRegister }) {
             value={email}
             onChange={handleChangeEmail}
           />
+          <p className='register__error'>{emailError}</p>
           <label htmlFor='register-pass' className='register__label'>
             Пароль
           </label>
@@ -69,8 +94,9 @@ function Register({ onSubmit, errorRegister, setErrorRegister }) {
             value={password}
             onChange={handleChangePassword}
           />
+          <p className='register__error'>{passwordError}</p>
           <p className='register__error'>{errorRegister}</p>
-          <button className='register__submit' type='submit'>
+          <button className={`register__submit ${isValid ? '' : 'register__submit_invalid'}`} type='submit' disabled={!isValid}>
             Зарегистрироваться
           </button>
           <p className='register__question'>

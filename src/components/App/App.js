@@ -53,7 +53,19 @@ function App() {
       .register(name, email, password)
       .then((res) => {
         setCurrentUser(res);
-        navigate('/signin');
+      })
+      .then(() => {
+        mainApi.login(email, password).then((res) => {
+          const { token } = res;
+          localStorage.setItem('email', email);
+          localStorage.setItem('token', token);
+
+          setIsLoggedIn(true);
+          navigate('/movies');
+        }).catch((err) => {
+          setErrorLogin(err);
+          navigate('/signin');
+        })
       })
       .catch((err) => {
         setErrorRegister(err);
@@ -70,7 +82,7 @@ function App() {
         localStorage.setItem('token', token);
 
         setIsLoggedIn(true);
-        navigate('/');
+        navigate('/movies');
       })
       .catch((err) => {
         setErrorLogin(err);

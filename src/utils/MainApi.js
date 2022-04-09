@@ -75,7 +75,7 @@ class MainApi {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
       headers: this._headers,
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify(name ? { name, email, password } : {email, password}),
     }).then((response) => {
       return this._checkRequest(response);
     });

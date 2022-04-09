@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from '../../images/logo.svg';
 import '../Register/Register.css';
 import { NavLink } from 'react-router-dom';
 
-function Login({ onSubmit }) {
+function Login({ onSubmit, errorLogin, setErrorLogin }) {
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('')
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [isValid, setIsValid] = useState(false);
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
+    const regexp = /[a-zA-Z0-9]+@[a-z]+\.[a-z]+/;
+    regexp.test(e.target.value) ? setEmailError('') : setEmailError('Неверно введена почта');
   }
 
   function handleChangePassword(e) {
     setPassword(e.target.value);
+    e.target.value.length > 0 ? setPasswordError('') : setPasswordError('Не введен пароль')
   }
+
+  useEffect(() => {
+    if (email.length > 0 && password.length > 0 && emailError === '') {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+    setErrorLogin('');
+  }, [email, password])
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,6 +54,7 @@ function Login({ onSubmit }) {
             value={email}
             onChange={handleChangeEmail}
           />
+          <p className='register__error'>{emailError}</p>
           <label htmlFor='register-pass' className='register__label'>
             Пароль
           </label>
@@ -50,9 +66,12 @@ function Login({ onSubmit }) {
             value={password}
             onChange={handleChangePassword}
           />
+          <p className='register__error'>{passwordError}</p>
+          <p className='register__error'>{errorLogin}</p>
           <button
-            className='register__submit register__submit_login'
+            className={`register__submit register__submit_login ${isValid ? '' : 'register__submit_invalid'}`}
             type='submit'
+            disabled={!isValid}
           >
             Войти
           </button>
