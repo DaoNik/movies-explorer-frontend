@@ -56,8 +56,9 @@ function App() {
       })
       .then(() => {
         mainApi.login(email, password).then((res) => {
-          const { token } = res;
+          const { token, name } = res;
           localStorage.setItem('email', email);
+          localStorage.setItem('name', name);
           localStorage.setItem('token', token);
 
           setIsLoggedIn(true);
@@ -78,6 +79,7 @@ function App() {
       .then((res) => {
         const { token, name } = res;
         localStorage.setItem('email', email);
+        localStorage.setItem('name', name);
         setCurrentUser({ name, email });
         localStorage.setItem('token', token);
 

@@ -148,7 +148,7 @@ function Movies({ saved }) {
           />
         ) : (
           <MoviesCardList
-            movies={JSON.parse(localStorage.getItem('movies'))}
+            movies={movies}
             saveMovie={saveMovie}
             deleteMovie={deleteMovie}
           />
