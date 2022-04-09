@@ -18,14 +18,12 @@ function SearchForm({
     e.preventDefault();
 
     searchMovies();
-    setSearchValue('');
   }
 
   function onSubmitSavedMovies(e) {
     e.preventDefault();
 
     searchSavedMovies();
-    setSearchValue('');
   }
 
   function handleClickCheckbox() {

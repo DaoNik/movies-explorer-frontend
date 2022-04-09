@@ -30,7 +30,7 @@ function Register({ onSubmit, errorRegister, setErrorRegister }) {
     <>
       <main className='register'>
         <h1 className='register__title'>Добро пожаловать!</h1>
-        <NavLink to='/' className='link'>
+        <NavLink to='/' className='link register__link-logo'>
           <img className='register__logo' src={logo} alt='Логотип' />
         </NavLink>
         <form className='register__form' onSubmit={handleRegister}>

@@ -25,7 +25,9 @@ function Login({ onSubmit }) {
     <>
       <main className='register'>
         <h1 className='register__title'>Рады видеть!</h1>
-        <img className='register__logo' src={logo} alt='Логотип' />
+        <NavLink to='/' className='link register__link-logo'>
+          <img className='register__logo' src={logo} alt='Логотип' />
+        </NavLink>
         <form className='register__form' onSubmit={handleSubmit}>
           <label htmlFor='register-email' className='register__label'>
             E-mail
