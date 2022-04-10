@@ -11,7 +11,7 @@ function SearchForm({
   searchSavedMovies,
 }) {
   function handleChangeSearch(e) {
-    setSearchValue(e.target.value);
+    setSearchValue(e.target.value.toLowerCase());
   }
 
   function onSubmitMovies(e) {

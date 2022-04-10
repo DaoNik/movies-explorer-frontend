@@ -25,6 +25,7 @@ function Movies({ saved }) {
           state.map((c) => {
             if (c.id === res.movieId) {
               c._id = res._id;
+              c.saved = true;
             }
             return c;
           })
@@ -33,6 +34,7 @@ function Movies({ saved }) {
           state.map((c) => {
             if (c.id === res.movieId) {
               c._id = res._id;
+              c.saved = true;
             }
             return c;
           })
@@ -51,6 +53,7 @@ function Movies({ saved }) {
           state.map((c) => {
             if (c.id === res.movieId) {
               delete c._id;
+              c.saved = false;
             }
             return c;
           })
@@ -59,6 +62,7 @@ function Movies({ saved }) {
           state.map((c) => {
             if (c.id === res.movieId) {
               delete c._id;
+              c.saved = false;
             }
             return c;
           })
@@ -93,15 +97,14 @@ function Movies({ saved }) {
   function searchMovies() {
     const result = allMovies.filter((movie) => {
       return (
-        (movie.nameRU?.includes(searchValue) ||
-          movie.nameEN?.includes(searchValue) ||
-          movie.description?.includes(searchValue)) &&
+        (movie.nameRU?.toLowerCase().includes(searchValue) ||
+          movie.nameEN?.toLowerCase().includes(searchValue)) &&
         (isShortMovie ? true : movie.duration > 40)
       );
     });
     result.map((movie) => {
       movie.saved = false;
-      savedMovies.forEach((saveMovie) => {
+      allSavedMovies.forEach((saveMovie) => {
         if (saveMovie.movieId === movie.id) {
           movie.saved = true;
         }
@@ -115,17 +118,14 @@ function Movies({ saved }) {
   function searchSavedMovies() {
     const result = allSavedMovies.filter((movie) => {
       return (
-        (movie.nameRU?.includes(searchValue) ||
-          movie.nameEN?.includes(searchValue) ||
-          movie.description?.includes(searchValue)) &&
+        (movie.nameRU?.toLowerCase().includes(searchValue) ||
+          movie.nameEN?.toLowerCase().includes(searchValue)) &&
         (isShortMovie ? true : movie.duration > 40)
       );
     });
     localStorage.setItem('saveMovies', JSON.stringify(result));
     setSavedMovies([...result]);
   }
-
-  console.log(movies);
 
   return (
     <>

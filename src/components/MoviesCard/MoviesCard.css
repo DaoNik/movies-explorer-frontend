@@ -58,12 +58,15 @@
   background-size: 11.32px;
 }
 
-.gallery__item-image {
+.gallery__item-link {
   grid-column: 1/ 3;
   grid-row: 3/ 4;
+  justify-self: center;
+}
+
+.gallery__item-image {
   max-width: 100%;
   height: 203px;
-  justify-self: center;
   box-sizing: border-box;
 }
 

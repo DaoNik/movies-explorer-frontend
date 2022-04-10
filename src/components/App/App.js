@@ -9,6 +9,7 @@ import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import mainApi from '../../utils/MainApi';
 import RequireAuth from '../RequireAuth/RequireAuth';
+import RequireLogout from "../RequireLogout/RequireLogout";
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import PopupUpdateUser from '../PopupUpdateUser/PopupUpdateUser';
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
@@ -104,8 +105,11 @@ function App() {
   function handleLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('email');
+    localStorage.removeItem('name');
+    localStorage.removeItem('movies');
     setIsLoggedIn(false);
-    navigate('/signin');
+    navigate('/');
   }
 
   return (
@@ -115,7 +119,8 @@ function App() {
         <Route
           path='/signin'
           element={
-            <Login
+            <RequireLogout
+              component={Login}
               onSubmit={handleLogin}
               errorLogin={errorLogin}
               setErrorLogin={setErrorLogin}
@@ -125,10 +130,11 @@ function App() {
         <Route
           path='/signup'
           element={
-            <Register
-              onSubmit={handleRegister}
-              errorRegister={errorRegister}
-              setErrorRegister={setErrorRegister}
+            <RequireLogout
+                component={Register}
+                onSubmit={handleRegister}
+                errorRegister={errorRegister}
+                setErrorRegister={setErrorRegister}
             />
           }
         />

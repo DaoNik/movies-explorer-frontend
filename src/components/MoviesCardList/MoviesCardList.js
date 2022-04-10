@@ -4,7 +4,6 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList({ movies, saveMovie, deleteMovie }) {
   const windowInnerWidth = window.innerWidth;
-  console.log(windowInnerWidth);
 
   return (
     <section className='gallery'>

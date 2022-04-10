@@ -60,27 +60,29 @@ function MoviesCard({ saved, active, movie, saveMovie, deleteMovie }) {
   }
 
   return (
-    <li className='gallery__list-item'>
-      <h3 className='gallery__list-title'>{title}</h3>
-      <p className='gallery__list-subtitle'>{newDuration(duration)}</p>
-      <button
-        onClick={handleSaved}
-        className={`gallery__list-item-button link ${
-          isSaved ? 'gallery__delete-button' : ''
-        } ${
-          isActive
-            ? 'gallery__list-item-button_active'
-            : 'gallery__list-item-button_saved'
-        }
-        }`}
-        type='button'
-      ></button>
-      <img
-        className='gallery__item-image'
-        src={imageUrl}
-        alt='Картинка карточки'
-      ></img>
-    </li>
+      <li className='gallery__list-item'>
+        <h3 className='gallery__list-title'>{title}</h3>
+        <p className='gallery__list-subtitle'>{newDuration(duration)}</p>
+        <button
+          onClick={handleSaved}
+          className={`gallery__list-item-button link ${
+            isSaved ? 'gallery__delete-button' : ''
+          } ${
+            isActive
+              ? 'gallery__list-item-button_active'
+              : 'gallery__list-item-button_saved'
+          }
+          }`}
+          type='button'
+        ></button>
+        <a className='link gallery__item-link' href={`${trailerLink}`}>
+        <img
+          className='gallery__item-image'
+          src={imageUrl}
+          alt='Картинка карточки'
+        ></img>
+        </a>
+      </li>
   );
 }
 
