@@ -30,10 +30,12 @@ function SearchForm({
 
   function handleClickCheckbox() {
     setIsShortMovie(!isShortMovie);
+    if (!saved) {
+      localStorage.setItem('checkbox', (!isShortMovie).toString());
+    }
     if (saved && isSearchSavedMovies) {
       searchSavedMovies()
     } else if (!saved && isSearchMovies) {
-      localStorage.setItem('checkbox', (!isShortMovie).toString());
       searchMovies()
     }
   }
