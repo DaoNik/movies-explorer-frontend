@@ -2,7 +2,7 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ movies, saveMovie, deleteMovie }) {
+function MoviesCardList({ movies, saveMovie, deleteMovie, isSearchMovies }) {
   const windowInnerWidth = window.innerWidth;
 
   return (
@@ -18,7 +18,7 @@ function MoviesCardList({ movies, saveMovie, deleteMovie }) {
             deleteMovie={deleteMovie}
           />
         )
-      }) : 'К сожалению, ничего не найдено'}</ul>
+      }) : `${isSearchMovies ? 'К сожалению, ничего не найдено' : ''}`}</ul>
       {movies.length > 3 ?<button className='gallery__button link'>Ещё</button> : ''}
     </section>
   );

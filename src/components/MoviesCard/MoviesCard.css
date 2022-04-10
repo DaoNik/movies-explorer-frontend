@@ -59,12 +59,18 @@
 }
 
 .gallery__item-link {
-  grid-column: 1/ 3;
-  grid-row: 3/ 4;
-  justify-self: center;
+  text-decoration: none;
+  color: white;
+}
+
+.gallery__item-link:hover {
+  opacity: 0.8;
 }
 
 .gallery__item-image {
+  grid-column: 1/ 3;
+  grid-row: 3/ 4;
+  justify-self: center;
   max-width: 100%;
   height: 203px;
   box-sizing: border-box;

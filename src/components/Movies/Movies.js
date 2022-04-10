@@ -7,6 +7,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
+import Preloader from "./Preloader/Preloader";
 
 function Movies({ saved }) {
   const [movies, setMovies] = useState([]);
@@ -16,6 +17,9 @@ function Movies({ saved }) {
   const [allSavedMovies, setAllSavedMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [isShortMovie, setIsShortMovie] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSearchMovies, setIsSearchMovies] = useState(false);
+  const [isSearchSavedMovies, setIsSearchSavedMovies] = useState(false);
 
   function saveMovie(movie) {
     mainApi
@@ -76,13 +80,18 @@ function Movies({ saved }) {
   }
 
   useEffect(() => {
+    setIsLoading(true);
     mainApi
       .getSavedMovies()
       .then((res) => {
         res.length ? setIsSavedMovies(true) : setIsSavedMovies(false);
         setAllSavedMovies(res);
+        setIsLoading(false);
       })
-      .catch((err) => setIsSavedMovies(false));
+      .catch((err) => {
+        setIsSavedMovies(false);
+        setIsLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -95,10 +104,12 @@ function Movies({ saved }) {
   }, []);
 
   function searchMovies() {
+    setIsLoading(true);
+    setIsSearchMovies(true);
     const result = allMovies.filter((movie) => {
       return (
-        (movie.nameRU?.toLowerCase().includes(searchValue) ||
-          movie.nameEN?.toLowerCase().includes(searchValue)) &&
+        (movie.nameRU?.toLowerCase().includes(searchValue.toLowerCase()) ||
+          movie.nameEN?.toLowerCase().includes(searchValue.toLowerCase())) &&
         (isShortMovie ? true : movie.duration > 40)
       );
     });
@@ -113,18 +124,22 @@ function Movies({ saved }) {
     });
     localStorage.setItem('movies', JSON.stringify(result));
     setMovies([...result]);
+    setIsLoading(false);
   }
 
   function searchSavedMovies() {
+    setIsLoading(true);
+    setIsSearchSavedMovies(true);
     const result = allSavedMovies.filter((movie) => {
       return (
-        (movie.nameRU?.toLowerCase().includes(searchValue) ||
-          movie.nameEN?.toLowerCase().includes(searchValue)) &&
+        (movie.nameRU?.toLowerCase().includes(searchValue.toLowerCase()) ||
+          movie.nameEN?.toLowerCase().includes(searchValue.toLowerCase())) &&
         (isShortMovie ? true : movie.duration > 40)
       );
     });
     localStorage.setItem('saveMovies', JSON.stringify(result));
     setSavedMovies([...result]);
+    setIsLoading(false);
   }
 
   return (
@@ -133,6 +148,8 @@ function Movies({ saved }) {
       <main className='movies'>
         <SearchForm
           saved={saved}
+          isSearchSavedMovies={isSearchSavedMovies}
+          isSearchMovies={isSearchMovies}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchMovies={searchMovies}
@@ -143,16 +160,20 @@ function Movies({ saved }) {
         {saved ? (
           <SavedMovies
             movies={savedMovies}
+            allSavedMovies={allSavedMovies}
             isSavedMovies={isSavedMovies}
             deleteMovie={deleteMovie}
+            isSearchSavedMovies={isSearchSavedMovies}
           />
         ) : (
           <MoviesCardList
             movies={movies}
             saveMovie={saveMovie}
             deleteMovie={deleteMovie}
+            isSearchMovies={isSearchMovies}
           />
         )}
+        <Preloader isLoading={isLoading} />
       </main>
       <Footer />
     </>

@@ -9,9 +9,11 @@ function SearchForm({
   isShortMovie,
   setIsShortMovie,
   searchSavedMovies,
+  isSearchSavedMovies,
+  isSearchMovies
 }) {
   function handleChangeSearch(e) {
-    setSearchValue(e.target.value.toLowerCase());
+    setSearchValue(e.target.value);
   }
 
   function onSubmitMovies(e) {
@@ -28,6 +30,11 @@ function SearchForm({
 
   function handleClickCheckbox() {
     setIsShortMovie(!isShortMovie);
+    if (saved && isSearchSavedMovies) {
+      searchSavedMovies()
+    } else if (!saved && isSearchMovies) {
+      searchMovies()
+    }
   }
 
   return (
