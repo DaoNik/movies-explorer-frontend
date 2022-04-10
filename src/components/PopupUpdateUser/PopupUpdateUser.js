@@ -19,6 +19,7 @@ function PopupUpdateUser({
     console.log('Работает')
     if (emailError === '' &&
       nameError === '' &&
+      name.length > 0 &&
       (localStorage.getItem('name') !== name ||
       localStorage.getItem('email') !== email)
     ) {
@@ -61,6 +62,15 @@ function PopupUpdateUser({
     setName('');
   }
 
+  function handleClosePopup() {
+    setName('');
+    setEmail(localStorage.getItem('email'));
+    setErrorPopup('');
+    setNameError('');
+    setEmailError('');
+    onClose();
+  }
+
   return (
     <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
       <div className='popup__container'>
@@ -96,7 +106,7 @@ function PopupUpdateUser({
           </button>
         </form>
         <button
-          onClick={onClose}
+          onClick={handleClosePopup}
           type='button'
           className='popup__btn-closed'
           aria-label='Кнопка закрытия всплывающего окна'

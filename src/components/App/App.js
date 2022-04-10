@@ -11,6 +11,7 @@ import mainApi from '../../utils/MainApi';
 import RequireAuth from '../RequireAuth/RequireAuth';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import PopupUpdateUser from '../PopupUpdateUser/PopupUpdateUser';
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function App() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function App() {
     email: '',
   });
   const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [isOpenInfo, setIsOpenInfo] = useState(false);
   const [errorPopup, setErrorPopup] = useState('');
   const [errorLogin, setErrorLogin] = useState('');
   const [errorRegister, setErrorRegister] = useState('');
@@ -29,13 +31,21 @@ function App() {
     setIsOpenPopup(false);
   }
 
+  function handleCloseInfoPopup() {
+    setIsOpenInfo(false);
+  }
+
   function handleUpdateUser(name, email) {
     mainApi
       .updateUser(name, email)
       .then((res) => {
+        const {name, email} = res;
         setErrorPopup('');
         setCurrentUser(res);
         setIsOpenPopup(false);
+        localStorage.setItem('name', name);
+        localStorage.setItem('email', email);
+        setIsOpenInfo(true);
       })
       .catch((err) => {
         setErrorPopup(err);
@@ -147,6 +157,8 @@ function App() {
           }
         />
       </Routes>
+
+      <InfoTooltip isOpen={isOpenInfo} onClose={handleCloseInfoPopup} />
 
       <PopupUpdateUser
         isOpen={isOpenPopup}
