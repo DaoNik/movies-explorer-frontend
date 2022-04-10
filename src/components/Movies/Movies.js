@@ -168,6 +168,7 @@ function Movies({ saved }) {
         ) : (
           <MoviesCardList
             movies={movies}
+            setMovies={setMovies}
             saveMovie={saveMovie}
             deleteMovie={deleteMovie}
             isSearchMovies={isSearchMovies}

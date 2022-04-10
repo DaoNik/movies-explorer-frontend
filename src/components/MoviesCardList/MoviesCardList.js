@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ movies, saveMovie, deleteMovie, isSearchMovies }) {
+function MoviesCardList({ movies, setMovies, saveMovie, deleteMovie, isSearchMovies }) {
   const windowInnerWidth = window.innerWidth;
   const [arrMovies, setArrMovies] = useState([]);
   const [addMovie, setAddMovie] = useState(0);
@@ -23,6 +23,12 @@ function MoviesCardList({ movies, saveMovie, deleteMovie, isSearchMovies }) {
       setAddMovie(0);
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('movies') ) {
+      setMovies(JSON.parse(localStorage.getItem('movies')))
+    }
+  }, [])
 
   useEffect(() => {
     const result = [];

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './SearchForm.css';
 
 function SearchForm({
@@ -18,7 +18,7 @@ function SearchForm({
 
   function onSubmitMovies(e) {
     e.preventDefault();
-
+    localStorage.setItem('searchMovies', searchValue);
     searchMovies();
   }
 
@@ -33,9 +33,25 @@ function SearchForm({
     if (saved && isSearchSavedMovies) {
       searchSavedMovies()
     } else if (!saved && isSearchMovies) {
+      localStorage.setItem('checkbox', (!isShortMovie).toString());
       searchMovies()
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('searchMovies') && !saved) {
+      setSearchValue(localStorage.getItem('searchMovies'))
+    }
+    if (localStorage.getItem('checkbox') &&
+        localStorage.getItem('checkbox') === 'true' &&
+        !saved) {
+      setIsShortMovie(true);
+    } else if (localStorage.getItem('checkbox') &&
+      localStorage.getItem('checkbox') === 'false' &&
+      !saved) {
+      setIsShortMovie(false);
+    }
+  }, [])
 
   return (
     <section className='search'>
