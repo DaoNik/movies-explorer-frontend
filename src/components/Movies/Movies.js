@@ -110,7 +110,7 @@ function Movies({ saved }) {
       return (
         (movie.nameRU?.toLowerCase().includes(searchValue.toLowerCase()) ||
           movie.nameEN?.toLowerCase().includes(searchValue.toLowerCase())) &&
-        (isShortMovie ? true : movie.duration > 40)
+        (localStorage.getItem('checkbox') === 'true' ? true : movie.duration > 40)
       );
     });
     result.map((movie) => {

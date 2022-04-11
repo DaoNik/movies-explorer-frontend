@@ -18,10 +18,10 @@ function MoviesCardList({ movies, setMovies, saveMovie, deleteMovie, isSearchMov
         result.push(movies[i])
       }
     }
-    setArrMovies([...arrMovies, ...result]);
-    if (arrMovies.length === movies.length) {
+    if (arrMovies.length + result.length === movies.length) {
       setAddMovie(0);
     }
+    setArrMovies([...arrMovies, ...result]);
   }
 
   useEffect(() => {
