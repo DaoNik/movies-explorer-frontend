@@ -7,8 +7,11 @@
   align-items: flex-start;
 }
 
-.register__logo {
+.register__link-logo {
   order: -1;
+}
+
+.register__logo {
   width: 38px;
   height: 38px;
 }
@@ -18,6 +21,11 @@
   font-size: 24px;
   line-height: 29px;
   margin: 40px 0;
+}
+
+.register__form {
+  max-width: 396px;
+  width: 100%;
 }
 
 .register__label {
@@ -68,6 +76,10 @@
   border-radius: 3px;
 }
 
+.register__submit_invalid {
+  background-color: #8b8b8b;
+}
+
 .register__submit_login {
   margin-top: 179px;
 }
@@ -106,7 +118,7 @@
   }
 
   .register__submit {
-    margin-top: 157px 0 14px;
+    margin: 157px 0 14px;
     font-size: 12px;
     line-height: 15px;
   }
