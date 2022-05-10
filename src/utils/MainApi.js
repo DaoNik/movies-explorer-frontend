@@ -71,11 +71,12 @@ class MainApi {
   };
 
   register = (name, email, password) => {
-    console.log(name, email, password);
     return fetch(`${this._url}/signup`, {
       method: 'POST',
       headers: this._headers,
-      body: JSON.stringify(name ? { name, email, password } : {email, password}),
+      body: JSON.stringify(
+        name ? { name, email, password } : { email, password }
+      ),
     }).then((response) => {
       return this._checkRequest(response);
     });
@@ -92,7 +93,6 @@ class MainApi {
   };
 
   updateUser = (name, email) => {
-    console.log(name, email);
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {

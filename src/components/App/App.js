@@ -9,10 +9,10 @@ import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import mainApi from '../../utils/MainApi';
 import RequireAuth from '../RequireAuth/RequireAuth';
-import RequireLogout from "../RequireLogout/RequireLogout";
+import RequireLogout from '../RequireLogout/RequireLogout';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import PopupUpdateUser from '../PopupUpdateUser/PopupUpdateUser';
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function App() {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ function App() {
     mainApi
       .updateUser(name, email)
       .then((res) => {
-        const {name, email} = res;
+        const { name, email } = res;
         setErrorPopup('');
         setCurrentUser(res);
         setIsOpenPopup(false);
@@ -66,18 +66,21 @@ function App() {
         setCurrentUser(res);
       })
       .then(() => {
-        mainApi.login(email, password).then((res) => {
-          const { token, name } = res;
-          localStorage.setItem('email', email);
-          localStorage.setItem('name', name);
-          localStorage.setItem('token', token);
+        mainApi
+          .login(email, password)
+          .then((res) => {
+            const { token, name } = res;
+            localStorage.setItem('email', email);
+            localStorage.setItem('name', name);
+            localStorage.setItem('token', token);
 
-          setIsLoggedIn(true);
-          navigate('/movies');
-        }).catch((err) => {
-          setErrorLogin(err);
-          navigate('/signin');
-        })
+            setIsLoggedIn(true);
+            navigate('/movies');
+          })
+          .catch((err) => {
+            setErrorLogin(err);
+            navigate('/signin');
+          });
       })
       .catch((err) => {
         setErrorRegister(err);
@@ -103,11 +106,7 @@ function App() {
   }
 
   function handleLogout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('email');
-    localStorage.removeItem('name');
-    localStorage.removeItem('movies');
+    localStorage.clear();
     setIsLoggedIn(false);
     navigate('/');
   }
@@ -131,10 +130,10 @@ function App() {
           path='/signup'
           element={
             <RequireLogout
-                component={Register}
-                onSubmit={handleRegister}
-                errorRegister={errorRegister}
-                setErrorRegister={setErrorRegister}
+              component={Register}
+              onSubmit={handleRegister}
+              errorRegister={errorRegister}
+              setErrorRegister={setErrorRegister}
             />
           }
         />

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './SearchForm.css';
 
 function SearchForm({
@@ -9,8 +9,6 @@ function SearchForm({
   isShortMovie,
   setIsShortMovie,
   searchSavedMovies,
-  isSearchSavedMovies,
-  isSearchMovies
 }) {
   function handleChangeSearch(e) {
     setSearchValue(e.target.value);
@@ -31,27 +29,31 @@ function SearchForm({
   function handleClickCheckbox() {
     setIsShortMovie(!isShortMovie);
     if (saved) {
-      searchSavedMovies()
+      searchSavedMovies();
     } else if (!saved) {
       localStorage.setItem('checkbox', (!isShortMovie).toString());
-      searchMovies()
+      searchMovies();
     }
   }
 
   useEffect(() => {
     if (localStorage.getItem('searchMovies') && !saved) {
-      setSearchValue(localStorage.getItem('searchMovies'))
+      setSearchValue(localStorage.getItem('searchMovies'));
     }
-    if (localStorage.getItem('checkbox') &&
-        localStorage.getItem('checkbox') === 'true' &&
-        !saved) {
+    if (
+      localStorage.getItem('checkbox') &&
+      localStorage.getItem('checkbox') === 'true' &&
+      !saved
+    ) {
       setIsShortMovie(true);
-    } else if (localStorage.getItem('checkbox') &&
+    } else if (
+      localStorage.getItem('checkbox') &&
       localStorage.getItem('checkbox') === 'false' &&
-      !saved) {
+      !saved
+    ) {
       setIsShortMovie(false);
     }
-  }, [])
+  }, []);
 
   return (
     <section className='search'>

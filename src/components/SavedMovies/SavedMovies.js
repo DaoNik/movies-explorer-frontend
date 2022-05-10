@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import mainApi from '../../utils/MainApi';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function SavedMovies({ movies, allSavedMovies, isSavedMovies, deleteMovie, isSearchSavedMovies }) {
+function SavedMovies({
+  movies,
+  allSavedMovies,
+  isSavedMovies,
+  deleteMovie,
+  isSearchSavedMovies,
+}) {
   const [arrMovies, setArrMovies] = useState([]);
 
   useEffect(() => {
-    console.log(isSearchSavedMovies);
     isSearchSavedMovies ? setArrMovies(movies) : setArrMovies(allSavedMovies);
-    console.log(arrMovies);
   }, [movies, allSavedMovies]);
 
   return (

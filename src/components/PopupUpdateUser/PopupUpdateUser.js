@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './PopupUpdateUser.css';
 
 function PopupUpdateUser({
@@ -16,30 +16,31 @@ function PopupUpdateUser({
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    console.log('Работает')
-    if (emailError === '' &&
+    if (
+      emailError === '' &&
       nameError === '' &&
       name.length > 0 &&
       (localStorage.getItem('name') !== name ||
-      localStorage.getItem('email') !== email)
+        localStorage.getItem('email') !== email)
     ) {
       setIsValid(true);
-    } else if ((localStorage.getItem('name') === name &&
-      localStorage.getItem('email') === email)) {
-      setErrorPopup('Значения не должны быть одинаковыми')
+    } else if (
+      localStorage.getItem('name') === name &&
+      localStorage.getItem('email') === email
+    ) {
+      setErrorPopup('Значения не должны быть одинаковыми');
       setIsValid(false);
     } else {
       setIsValid(false);
     }
-  }, [name, email])
+  }, [name, email]);
 
   function handleChangeName(e) {
     setName(e.target.value);
-    if (e.target.value.length >= 2 &&
-        e.target.value.length <= 30) {
+    if (e.target.value.length >= 2 && e.target.value.length <= 30) {
       setNameError('');
     } else {
-      setNameError('Имя должно быть от 2 до 30 символов')
+      setNameError('Имя должно быть от 2 до 30 символов');
     }
     setErrorPopup('');
   }
@@ -48,9 +49,9 @@ function PopupUpdateUser({
     setEmail(e.target.value);
     const regexp = /[a-zA-Z0-9]+@[a-z]+\.[a-z]+/;
     if (regexp.test(e.target.value)) {
-      setEmailError('')
+      setEmailError('');
     } else {
-      setEmailError('Неверно введена почта')
+      setEmailError('Неверно введена почта');
     }
     setErrorPopup('');
   }
@@ -98,10 +99,12 @@ function PopupUpdateUser({
             required
           />
           <span className='popup__error'>{emailError}</span>
-          <span className='popup__error'>
-            {errorPopup}
-          </span>
-          <button type='submit' className={`popup__btn ${isValid ? '' : 'popup__btn_disabled'}`} disabled={!isValid}>
+          <span className='popup__error'>{errorPopup}</span>
+          <button
+            type='submit'
+            className={`popup__btn ${isValid ? '' : 'popup__btn_disabled'}`}
+            disabled={!isValid}
+          >
             Изменить имя
           </button>
         </form>

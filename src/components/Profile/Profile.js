@@ -1,17 +1,13 @@
 import React from 'react';
 import Header from '../Header/Header';
 import './Profile.css';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function Profile({ onLogout, setIsOpenPopup }) {
-  const currentUser = React.useContext(CurrentUserContext);
-
   function handleUpdate() {
     setIsOpenPopup(true);
   }
 
   function handleLogout() {
-    console.log(onLogout);
     onLogout();
   }
 
@@ -19,7 +15,9 @@ function Profile({ onLogout, setIsOpenPopup }) {
     <>
       <Header />
       <main className='profile'>
-        <h2 className='profile__title'>Привет, {localStorage.getItem('name')}!</h2>
+        <h2 className='profile__title'>
+          Привет, {localStorage.getItem('name')}!
+        </h2>
         <p className='profile__user-data'>
           <span>Имя</span>
           <span>{localStorage.getItem('name')}</span>
